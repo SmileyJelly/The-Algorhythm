@@ -40,14 +40,14 @@ This project features a complete Sudoku puzzle generator and solver built in Jav
 ---
 ## 🧠 Final Thoughts
 
-This project helped me learn about:
+This project furthered our knowledge in:
 - Arrays
 - Nested loops
 - Object-oriented programming
 - User input handling
 - Problem-solving with algorithms (backtracking)
 
-And even how to use GitHub, branches, and IntelliJ to manage code.
+And how to use GitHub, branches, and IntelliJ to manage code.
 
 ---
 ## 🛠 Tech Stack
