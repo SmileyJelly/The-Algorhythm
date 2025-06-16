@@ -1,0 +1,95 @@
+// Sudoku Solver
+
+public class SudokuSolver {
+
+    public boolean solve(int[][] board) {
+        // Add backtracking logic to solve the Sudoku puzzle
+        return true; // Placeholder
+    }
+
+    public boolean isSafe(int[][] board, int row, int col, int num) {
+        // Check if placing num at board[row][col] is safe
+        return true; // Placeholder
+    }
+}
+
+
+// Sudoku Board
+
+import java.util.Random;
+
+public class SudokuBoard {
+    private int[][] board;
+    private int[][] solution;
+
+    public SudokuBoard() {
+        board = new int[9][9]; // 9x9 empty board
+    }
+
+    public int[][] getGrid() {
+        return board;
+    }
+
+    public void printBoard() {
+        // Print formatted board to console
+    }
+
+    public boolean isValidMove(int row, int col, int num) {
+        // Check row, column, and 3x3 box for validity
+        return true; // Placeholder
+    }
+
+    public boolean isComplete() {
+        // Return true if all cells are filled
+        return false; // Placeholder
+    }
+
+    public void generatePuzzle(int difficulty) {
+        // Generate a full board and remove cells based on difficulty
+    }
+
+    private int[][] copyBoard(int[][] source) {
+        // Create and return a deep copy of a board
+        return new int[9][9]; // Placeholder
+    }
+}
+
+
+// Main 
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        SudokuBoard board = new SudokuBoard();
+        Scanner input = new Scanner(System.in);
+
+        board.generatePuzzle(1); // Example: Easy
+
+        while (!board.isComplete()) {
+            board.printBoard();
+            System.out.print("Enter row (1-9) or 's' to solve: ");
+            String rowInput = input.next();
+
+            if (rowInput.equalsIgnoreCase("s")) {
+                SudokuSolver solver = new SudokuSolver();
+                if (solver.solve(board.getGrid())) {
+                    System.out.println("Puzzle Solved:");
+                    board.printBoard();
+                } else {
+                    System.out.println("No solution exists.");
+                }
+                break;
+            }
+
+            // Validate user input (row, col, num)
+            // Make move if valid, otherwise print error
+        }
+
+        if (board.isComplete()) {
+            System.out.println("Congratulations! You completed the puzzle!");
+        }
+
+        input.close();
+    }
+}
