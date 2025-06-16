@@ -3,10 +3,10 @@ import java.util.Scanner;
 import java.util.Collections;
 import java.util.ArrayList;
 
-public class SudokuBoard {
+public class SudokuFullGame {
     private int[][] board;
     private int[][] solution;
-    public SudokuBoard() {
+    public SudokuFullGame() {
         board = new int[9][9];
     }
 
@@ -137,7 +137,7 @@ public class SudokuBoard {
     }
 
     public static void main(String[] args) {
-        SudokuBoard board = new SudokuBoard();
+        SudokuFullGame board = new SudokuFullGame();
         Scanner input = new Scanner(System.in);
 
         board.generatePuzzle(1);  // Easy difficulty

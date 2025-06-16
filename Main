@@ -1,0 +1,39 @@
+public static void main(String[] args) {
+    // Create an empty 9x9 board
+    int[][] board = new int[9][9];
+
+    // Create an instance of your solver
+    SudokuSolver solver = new SudokuSolver();
+
+    // Print the initial (empty) board
+    System.out.println("Initial Board (Empty):");
+    printBoard(board);
+
+    // Try solving the board
+    if (solver.solve(board)) {
+        System.out.println("\nSolved Board:");
+        printBoard(board);
+    } else {
+        System.out.println("No solution exists for the given board.");
+    }
+}
+
+public static void printBoard(int[][] board) {
+    for (int row = 0; row < 9; row++) {
+        if (row % 3 == 0 && row != 0) {
+            System.out.println("------+-------+------");
+        }
+        for (int col = 0; col < 9; col++) {
+            if (col % 3 == 0 && col != 0) {
+                System.out.print("| ");
+            }
+            int val = board[row][col];
+            System.out.print(val == 0 ? ". " : val + " ");
+        }
+        System.out.println();
+    }
+}
+
+// Testing Purposes Only
+
+
