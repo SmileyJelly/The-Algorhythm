@@ -26,9 +26,7 @@ This project features a complete Sudoku puzzle generator and solver built in Jav
 ---
 ## 😵‍💫 What Was the Most Difficult?
 
-- Understanding how to randomize the board and still keep it solvable
-    Randomly removing numbers or placing values could lead to unsolvable puzzles.
-    We had to first generate a full valid board and only then randomly remove values.
+- Understanding how to randomize the board and still keep it solvable. Randomly removing numbers or placing values could lead to unsolvable puzzles. We had to first generate a full valid board and only then randomly remove values.
 - Importing the right classes and using packages correctly  
 - Linking everything together and keeping the code clean was the hardest part.
   
@@ -40,7 +38,18 @@ This project features a complete Sudoku puzzle generator and solver built in Jav
 - Learn how to use Github for version control basics like staging, committing, pushing, and switching branches in Git Bash while using IntelliJ at the same time. 
 
 ---
+## 🧠 Final Thoughts
 
+This project helped me learn about:
+- Arrays
+- Nested loops
+- Object-oriented programming
+- User input handling
+- Problem-solving with algorithms (backtracking)
+
+And even how to use GitHub, branches, and IntelliJ to manage code.
+
+---
 ## 🛠 Tech Stack
 
 - **Language:** Java  
