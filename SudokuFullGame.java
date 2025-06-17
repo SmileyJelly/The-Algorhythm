@@ -205,7 +205,7 @@ public class SudokuFullGame {
         if (board.isComplete()) {
             System.out.println("Congratulations! You completed the puzzle:");
             board.printBoard();
-        }
+        } // Ascii Art Generated
         System.out.println(
                 "⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
                         "⠀⠀⣀⠀⢀⣶⣿⡛⠛⠋⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠙⠛⢛⣿⣶⡄⠀⣀⠀⠀\n" +
