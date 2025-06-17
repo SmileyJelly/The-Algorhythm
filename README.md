@@ -48,7 +48,10 @@ This project furthered our knowledge in:
 - Problem-solving with algorithms (backtracking)
 
 And how to use GitHub, branches, and IntelliJ to manage code.
-
+---
+## Links
+1. **(Shuffle collection using Shuffle Method)**; https://youtu.be/CoUYYt-ZxHU?si=XTAe3_mdzmxdtHFs
+2. **(Sudoku Solver Guide)**; https://youtu.be/mcXc8Mva2bA?si=VTt-Oo0zczcEsaaG
 ---
 ## 🛠 Tech Stack
 - **Brainstorming** https://www.tldraw.com/f/5XKE0oaA7Cs_rfD8xTfe2?d=v-5305.-6145.20400.11707.page
