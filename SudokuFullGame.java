@@ -1,11 +1,12 @@
 import java.util.Random;
 import java.util.Scanner;
-import java.util.Collections;
+import java.util.List;
 import java.util.ArrayList;
 
 public class SudokuFullGame {
     private int[][] board;
     private int[][] solution;
+
     public SudokuFullGame() {
         board = new int[9][9];
     }
@@ -67,7 +68,6 @@ public class SudokuFullGame {
         solution = copyBoard(fullBoard);  // full solution
         board = copyBoard(fullBoard);     // puzzle that gets modified
 
-
         int cellsToRemove = switch (difficulty) {
             case 1 -> 30; // Easy
             case 2 -> 40; // Medium
@@ -85,6 +85,7 @@ public class SudokuFullGame {
             }
         }
     }
+
     private int[][] copyBoard(int[][] source) {
         int[][] copy = new int[9][9];
         for (int i = 0; i < 9; i++) {
@@ -93,29 +94,27 @@ public class SudokuFullGame {
         return copy;
     }
 
+    // Solver: Source used link 2 youtube video
     static class SudokuSolver {
         public boolean solve(int[][] board) {
             for (int row = 0; row < 9; row++) {
                 for (int col = 0; col < 9; col++) {
                     if (board[row][col] == 0) {
-                        ArrayList<Integer> numbers = new ArrayList<>();
-                        for (int n = 1; n <= 9; n++) {
-                            numbers.add(n);
-                        }
-                        Collections.shuffle(numbers);  // randomize the order
+                        List<Integer> numbers = getShuffledNumber(); // added shuffle method to make puzzle more random
 
                         for (int num : numbers) {
                             if (isSafe(board, row, col, num)) {
                                 board[row][col] = num;
                                 if (solve(board)) return true;
-                                board[row][col] = 0;
+                                board[row][col] = 0; // backtrack
                             }
                         }
-                        return false;
+
+                        return false; // no number worked here, need to backtrack
                     }
                 }
             }
-            return true;
+            return true; // puzzle is solved
         }
 
         public boolean isSafe(int[][] board, int row, int col, int num) {
@@ -134,13 +133,31 @@ public class SudokuFullGame {
 
             return true;
         }
+
+        // Source used youtube video 1.
+        private List<Integer> getShuffledNumber() { 
+            List<Integer> numbers = new ArrayList<>();
+            for (int i = 1; i <= 9; i++) {
+                numbers.add(i);
+            }
+
+            Random rand = new Random();
+            for (int i = numbers.size() - 1; i > 0; i--) {
+                int j = rand.nextInt(i + 1);
+                int temp = numbers.get(i);
+                numbers.set(i, numbers.get(j));
+                numbers.set(j, temp);
+            }
+
+            return numbers;
+        }
     }
 
     public static void main(String[] args) {
         SudokuFullGame board = new SudokuFullGame();
         Scanner input = new Scanner(System.in);
 
-        board.generatePuzzle(1);  // Easy difficulty
+        board.generatePuzzle(3);  // Change difficulty here 1,2,3. It is on 1 by default
         System.out.println("Welcome to Console Sudoku!");
         System.out.println("Type 's' at any time to auto-solve the Sudoku puzzle.\n");
 
@@ -190,24 +207,23 @@ public class SudokuFullGame {
             board.printBoard();
         }
         System.out.println(
-        "⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
-        "⠀⠀⣀⠀⢀⣶⣿⡛⠛⠋⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠙⠛⢛⣿⣶⡄⠀⣀⠀⠀\n" +
-        "⠀⠀⣿⣧⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⣼⣿⠀⠀\n" +
-        "⠀⠀⣿⡏⠉⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠉⢹⣿⠀⠀\n" +
-        "⠀⠀⢻⣧⠀⢹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠀⣼⡏⠀⠀\n" +
-        "⠀⠀⠘⣿⡄⠀⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠀⢰⣿⠃⠀⠀\n" +
-        "⠀⠀⠀⠹⣷⡀⠈⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠁⢠⣿⡏⠀⠀⠀\n" +
-        "⠀⠀⠀⠀⢻⣿⣄⢀⣻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡀⣠⣿⡟⠀⠀⠀⠀\n" +
-        "⠀⠀⠀⠀⠀⠙⣿⣾⡿⠋⠻⣿⣿⣿⣿⣿⣿⣿⣿⠟⠙⢿⣿⣿⠏⠀⠀⠀⠀⠀\n" +
-        "⠀⠀⠀⠀⠀⠀⠈⠻⠟⠀⠀⠀⢹⣿⣿⣿⣿⡏⠀⠀⠀⠻⠟⠁⠀⠀⠀⠀⠀⠀\n" +
-        "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢻⣿⣿⣿⣿⡟⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
-        "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
-        "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣴⣿⣿⣿⣿⣿⣿⣦⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
-        "⠀⠀⠀⠀⠀⠀⠀⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⠀⠀⠀⠀⠀⠀⠀\n" +
-        "⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠉⠉⠉⠛⠛⠛⠛⠉⠉⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀"
-    );
+                "⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
+                        "⠀⠀⣀⠀⢀⣶⣿⡛⠛⠋⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠙⠛⢛⣿⣶⡄⠀⣀⠀⠀\n" +
+                        "⠀⠀⣿⣧⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⣼⣿⠀⠀\n" +
+                        "⠀⠀⣿⡏⠉⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠉⢹⣿⠀⠀\n" +
+                        "⠀⠀⢻⣧⠀⢹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠀⣼⡏⠀⠀\n" +
+                        "⠀⠀⠘⣿⡄⠀⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠀⢰⣿⠃⠀⠀\n" +
+                        "⠀⠀⠀⠹⣷⡀⠈⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠁⢠⣿⡏⠀⠀⠀\n" +
+                        "⠀⠀⠀⠀⢻⣿⣄⢀⣻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡀⣠⣿⡟⠀⠀⠀⠀\n" +
+                        "⠀⠀⠀⠀⠀⠙⣿⣾⡿⠋⠻⣿⣿⣿⣿⣿⣿⣿⣿⠟⠙⢿⣿⣿⠏⠀⠀⠀⠀⠀\n" +
+                        "⠀⠀⠀⠀⠀⠀⠈⠻⠟⠀⠀⠀⢹⣿⣿⣿⣿⡏⠀⠀⠀⠻⠟⠁⠀⠀⠀⠀⠀⠀\n" +
+                        "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢻⣿⣿⣿⣿⡟⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
+                        "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
+                        "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣴⣿⣿⣿⣿⣿⣿⣦⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
+                        "⠀⠀⠀⠀⠀⠀⠀⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⠀⠀⠀⠀⠀⠀⠀\n" +
+                        "⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠉⠉⠉⠛⠛⠛⠛⠉⠉⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀"
+        );
 
         input.close();
     }
 }
-
