@@ -1,6 +1,6 @@
 # 🧩 Console Sudoku Game (Java)
 
-Welcome to the Console Sudoku Game — a simple but functional Sudoku puzzle game you can play right in your terminal!
+Welcome to the Console Sudoku Game, a simple but functional Sudoku puzzle game you can play right in your terminal!
 
 This project features a complete Sudoku puzzle generator and solver built in Java, allowing users to play manually or auto-solve the puzzle at any time.
 
