@@ -56,7 +56,7 @@ And how to use GitHub, branches, and IntelliJ to manage code.
 ## 🛠 Tech Stack
 - **Brainstorming** TL Draw: https://www.tldraw.com/f/5XKE0oaA7Cs_rfD8xTfe2?d=v-5305.-6145.20400.11707.page
 - **Language:** Java  
-- **Tools Used:** Scanner, Random, ArrayList, Collections
+- **Tools Used:** Scanner, Random, ArrayList, Lists
 
 ---
 
