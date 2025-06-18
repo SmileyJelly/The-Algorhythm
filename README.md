@@ -54,7 +54,7 @@ And how to use GitHub, branches, and IntelliJ to manage code.
 2. **(Sudoku Solver Guide)**; https://youtu.be/mcXc8Mva2bA?si=VTt-Oo0zczcEsaaG
 ---
 ## 🛠 Tech Stack
-- **Brainstorming** https://www.tldraw.com/f/5XKE0oaA7Cs_rfD8xTfe2?d=v-5305.-6145.20400.11707.page
+- **Brainstorming** TL Draw: https://www.tldraw.com/f/5XKE0oaA7Cs_rfD8xTfe2?d=v-5305.-6145.20400.11707.page
 - **Language:** Java  
 - **Tools Used:** Scanner, Random, ArrayList, Collections
 
